@@ -2,12 +2,13 @@
 
 #include "U8glib.h"
 
-#include "Utilities.h"
+#include "WeatherData.h"
 #include "Settings.h"
 
 struct DisplayData {
+  const WeatherData& weather_data;
   uint8_t mode;
-  WeatherData weather_data;
+  float altitude_offset;
 };
 
 class Display {
@@ -16,7 +17,11 @@ public:
 
   void init();
 
-  void tick(const DisplayData& display_data);
+  void drawMode(const DisplayData& display_data);
+
+  void draw(const DisplayData& display_data);
+
+  void clearDisplay();
 
 private:
   U8GLIB_SSD1306_128X64 u8g;

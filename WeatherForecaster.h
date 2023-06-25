@@ -6,14 +6,11 @@
 #include <Wire.h>
 #include "float16.h"
 
-#include "Utilities.h"
+#include "WeatherData.h"
 
 class WeatherForecaster {
 public:
   WeatherForecaster() = default;
 
   float forecast(const TrackedData& tracked_data);
-
-private:
-  Adafruit_BME280* bme;
 };
