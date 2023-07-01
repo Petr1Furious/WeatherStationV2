@@ -58,7 +58,7 @@ void Display::draw(const DisplayData& display_data) {
           change_string = "> rain";
         } else if (change <= 75) {
           change_string = "= same";
-        } else if (change <= -150) {
+        } else if (change <= 150) {
           change_string = "< clear";
         } else {
           change_string = "<< clear";
@@ -100,6 +100,15 @@ void Display::draw(const DisplayData& display_data) {
         float16 f;
         f.setBinary(tracked[i]);
         u8g.drawPixel(h_offset + i, map(f.toDouble() * 1000, mn * 1000, mx * 1000, u8g.getHeight() - 1, graph_height_offset));
+      }
+
+      for (int i = 1;; i++) {
+        int hour_pos = ((int)u8g.getWidth() - (i * 60) / (int)TRACKING_STEP_MINUTES);
+        if (hour_pos < h_offset) {
+          break;
+        }
+        u8g.drawPixel(hour_pos, u8g.getHeight() - 1);
+        u8g.drawPixel(hour_pos, u8g.getHeight() - 2);
       }
 
       u8g.drawStr(0, u8g.getHeight(), "L");

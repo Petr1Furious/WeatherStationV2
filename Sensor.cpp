@@ -10,6 +10,13 @@ void Sensor::init() {
     while (true)
       ;
   }
+
+  // bme.setSampling(Adafruit_BME280::MODE_FORCED,
+  //                   Adafruit_BME280::SAMPLING_X1,
+  //                   Adafruit_BME280::SAMPLING_X1,
+  //                   Adafruit_BME280::SAMPLING_X1,
+  //                   Adafruit_BME280::FILTER_OFF
+  //                   Adafruit_BME280::STANDBY_MS_1000);
 }
 
 float Sensor::getTemperature() {
